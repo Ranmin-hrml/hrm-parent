@@ -16,8 +16,8 @@ spring:
       server:
         git:
         #仓库的地址
-          uri: https://github.com/Ranmin-hrml/hrm-parent.git
-          #仓库的子目录中寻找配置文件
+          uri: https://github.com/Ranmin-hrml/hrm-parent-1229.git
+          #仓库的子目录中寻找配置文件 src/main/resources
           searchPaths: src/main/resources
 
 

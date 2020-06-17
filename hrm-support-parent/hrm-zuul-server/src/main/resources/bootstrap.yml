@@ -5,5 +5,5 @@ spring:
       name: application-zuul #名称
       #集群版配置中心
       discovery:
-        service-id: zuul-server
+        service-id: config-server
         enabled: true

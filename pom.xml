@@ -12,8 +12,7 @@
         <module>hrm-basic-parent</module>
         <module>hrm-support-parent</module>
         <module>hrm-system-parent</module>
-        <module>hrm-config-server/spring-cloud-config-server</module>
-        <module>hrm-course-server</module>
+        <module>hrm-course-parent</module>
     </modules>
 
     <properties>

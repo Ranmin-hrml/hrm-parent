@@ -15,8 +15,6 @@
         <module>hrm-eureka-server</module>
         <module>hrm-zuul-server</module>
         <module>hrm-config-server</module>
-        <module>hrml-cloud-config-server</module>
-        <module>hrm-course-server</module>
     </modules>
 
 
