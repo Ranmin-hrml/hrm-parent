@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      profile: dev #环境
+      name: application-zuul #名称
+      #集群版配置中心
+      discovery:
+        service-id: zuul-server
+        enabled: true

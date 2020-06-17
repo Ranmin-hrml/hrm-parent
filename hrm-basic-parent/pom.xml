@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>hrm-basic-util</module>
+        <module>hrm-basic-boot-starter</module>
+        <module>hrm-basic-generator</module>
     </modules>
 
 

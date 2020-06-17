@@ -1,0 +1,23 @@
+server:
+  port: 9999
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/ #服务注册的地址
+  instance:
+    instance-id: config-server:9999
+    prefer-ip-address: true
+
+spring:
+  application:
+      name: config-server
+  cloud:
+    config:
+      server:
+        git:
+        #仓库的地址
+          uri: https://github.com/Ranmin-hrml/hrm-parent.git
+          #仓库的子目录中寻找配置文件
+          searchPaths: src/main/resources
+
+

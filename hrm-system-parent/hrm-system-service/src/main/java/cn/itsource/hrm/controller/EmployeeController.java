@@ -2,7 +2,7 @@ package cn.itsource.hrm.controller;
 
 import cn.itsource.hrm.doamin.Employee;
 import cn.itsource.hrm.service.IEmployeeService;
-import cn.itsource.hrm.util.util.AjaxResult;
+import cn.itsource.hrm.util.AjaxResult;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
