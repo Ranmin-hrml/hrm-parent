@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
+//@CrossOrigin({"http://localhost:6001","http//127.0.0.1:6001"})
 public class EmployeeController {
 
     @Autowired

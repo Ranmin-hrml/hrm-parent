@@ -4,6 +4,7 @@ package cn.itsource.hrm.query;
 public class BaseQuery {
 
     private Integer pageNum;
+
     private Integer pageSize;
 
     private String keyword;
