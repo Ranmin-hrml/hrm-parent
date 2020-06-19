@@ -1,6 +1,6 @@
 package cn.itsource.hrm.mapper;
 
-import cn.itsource.hrm.domain.Employee;
+import cn.itsource.hrm.domain.MealPermission;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Component;
  * @since 2020-06-19
  */
 @Component
-public interface EmployeeMapper extends BaseMapper<Employee> {
+public interface MealPermissionMapper extends BaseMapper<MealPermission> {
 
 }

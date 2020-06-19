@@ -1,6 +1,7 @@
 package cn.itsource.hrm.controller;
 
-import cn.itsource.hrm.doamin.Employee;
+
+import cn.itsource.hrm.domain.Employee;
 import cn.itsource.hrm.service.IEmployeeService;
 import cn.itsource.hrm.util.AjaxResult;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
