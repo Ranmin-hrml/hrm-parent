@@ -1,8 +1,8 @@
 package cn.itsource.hrm.controller;
 
-import cn.itsource.hrm.service.IEmployeeService;
-import cn.itsource.hrm.domain.Employee;
-import cn.itsource.hrm.query.EmployeeQuery;
+import cn.itsource.hrm.service.IEmployeeRoleService;
+import cn.itsource.hrm.domain.EmployeeRole;
+import cn.itsource.hrm.query.EmployeeRoleQuery;
 import cn.itsource.hrm.util.AjaxResult;
 import cn.itsource.hrm.util.PageList;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employee")
-public class EmployeeController {
+@RequestMapping("/employeeRole")
+public class EmployeeRoleController {
     @Autowired
-    public IEmployeeService employeeService;
+    public IEmployeeRoleService employeeRoleService;
 
     /**
     * 保存和修改公用的
-    * @param employee  传递的实体
+    * @param employeeRole  传递的实体
     * @return Ajaxresult转换结果
     */
     @RequestMapping(value="/save",method= RequestMethod.POST)
-    public AjaxResult save(@RequestBody Employee employee){
+    public AjaxResult save(@RequestBody EmployeeRole employeeRole){
         try {
-            if(employee.getId()!=null){
-                employeeService.updateById(employee);
+            if(employeeRole.getId()!=null){
+                employeeRoleService.updateById(employeeRole);
             }else{
-                employeeService.save(employee);
+                employeeRoleService.save(employeeRole);
             }
             return AjaxResult.me();
         } catch (Exception e) {
@@ -45,7 +45,7 @@ public class EmployeeController {
     @RequestMapping(value="/{id}",method=RequestMethod.DELETE)
     public AjaxResult delete(@PathVariable("id") Long id){
         try {
-            employeeService.removeById(id);
+            employeeRoleService.removeById(id);
             return AjaxResult.me();
         } catch (Exception e) {
         e.printStackTrace();
@@ -54,9 +54,9 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Employee get(@PathVariable("id")Long id)
+    public EmployeeRole get(@PathVariable("id")Long id)
     {
-        return employeeService.getById(id);
+        return employeeRoleService.getById(id);
     }
 
 
@@ -65,9 +65,9 @@ public class EmployeeController {
     * @return
     */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public List<Employee> list(){
+    public List<EmployeeRole> list(){
 
-        return employeeService.list(null);
+        return employeeRoleService.list(null);
     }
 
 
@@ -78,9 +78,9 @@ public class EmployeeController {
     * @return PageList 分页对象
     */
     @RequestMapping(value = "/page",method = RequestMethod.POST)
-    public PageList<Employee> page(@RequestBody EmployeeQuery query)
+    public PageList<EmployeeRole> page(@RequestBody EmployeeRoleQuery query)
     {
-        Page<Employee> page = employeeService.page(new Page<Employee>(query.getPageNum(), query.getPageSize()));
+        Page<EmployeeRole> page = employeeRoleService.page(new Page<EmployeeRole>(query.getPageNum(), query.getPageSize()));
         return new PageList<>(page.getTotal(),page.getRecords());
     }
 }
