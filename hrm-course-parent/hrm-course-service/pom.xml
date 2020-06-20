@@ -23,6 +23,19 @@
             <artifactId>hrm-basic-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>cn.itsource.hrm</groupId>
+            <artifactId>hrm-cache-interface</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!--json字符串转换-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.62</version>
+        </dependency>
+
     </dependencies>
 
     <build>

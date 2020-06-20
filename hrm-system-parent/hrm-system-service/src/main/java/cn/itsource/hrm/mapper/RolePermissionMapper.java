@@ -18,6 +18,6 @@ import java.util.List;
 @Component
 public interface RolePermissionMapper extends BaseMapper<RolePermission> {
 
-    void insertBatch(@Param ( "id" ) Long id,@Param ( "permissionIds" ) List<Long> permissionIds);
+    void insertBatch(@Param ( "roleId" ) Long id,@Param ( "permissionIds" ) List<Long> permissionIds);
 
 }

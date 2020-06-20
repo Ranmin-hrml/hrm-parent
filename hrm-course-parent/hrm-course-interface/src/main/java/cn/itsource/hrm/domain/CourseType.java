@@ -1,12 +1,15 @@
 package cn.itsource.hrm.domain;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -66,5 +69,7 @@ public class CourseType implements Serializable {
     @TableField("totalCount")
     private Integer totalCount;
 
+    @TableField(exist = false)
+    private List<CourseType> children = new ArrayList<> ();
 
 }

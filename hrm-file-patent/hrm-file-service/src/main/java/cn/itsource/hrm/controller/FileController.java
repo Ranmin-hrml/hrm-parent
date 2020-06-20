@@ -3,7 +3,6 @@ package cn.itsource.hrm.controller;
 import cn.itsource.hrm.util.AjaxResult;
 import cn.itsource.hrm.util.FastDfsApiOpr;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,7 +16,7 @@ public class FileController {
     public AjaxResult upload(MultipartFile file){
 
         try {
-            //文件名称   asdsdf.sdf.png
+            //文件名称
             String fileName = file.getOriginalFilename();
             int index = fileName.lastIndexOf(".");
             String extName = fileName.substring(index + 1);
