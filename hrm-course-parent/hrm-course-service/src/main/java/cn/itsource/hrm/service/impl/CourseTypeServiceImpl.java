@@ -60,6 +60,7 @@ public class CourseTypeServiceImpl extends ServiceImpl<CourseTypeMapper, CourseT
                 ajaxResult = cacheClient.setnx("courseTypeKey","1");
                 Integer result = (Integer) ajaxResult.getResultObj();
                 //上锁成功
+                //System.out.println (result);
                 if(result==1){
                     //如果没有，则查询数据库
                     courseTypeList = typeTreeByLoopMap();

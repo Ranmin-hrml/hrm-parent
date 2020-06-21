@@ -33,7 +33,7 @@ public class Swagger2Configuration {
         return new ApiInfoBuilder()
                 .title("缓存服务文档")
                 .description("缓存服务的接口文档")
-                .contact(new Contact("solargen", "", "4978125@11.com"))
+                .contact(new Contact("ranmin", "", "ranmin@qq.com"))
                 .version("1.0")
                 .build();
     }
