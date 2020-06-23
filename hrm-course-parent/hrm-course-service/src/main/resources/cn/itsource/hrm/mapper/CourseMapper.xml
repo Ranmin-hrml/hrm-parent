@@ -18,6 +18,74 @@
         <result column="start_time" property="startTime" />
         <result column="end_time" property="endTime" />
         <result column="pic" property="pic" />
+
     </resultMap>
+
+    <resultMap id="CourseMap" type="cn.itsource.hrm.domain.Course">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="users" property="users" />
+        <result column="course_type_id" property="courseTypeId" />
+        <result column="gradeName" property="gradeName" />
+        <result column="grade" property="grade" />
+        <result column="status" property="status" />
+        <result column="tenant_id" property="tenantId" />
+        <result column="tenantName" property="tenantName" />
+        <result column="user_id" property="userId" />
+        <result column="userName" property="userName" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="pic" property="pic" />
+        <association property="courseType" javaType="cn.itsource.hrm.domain.CourseType">
+            <id column="course_type_id" property="id"/>
+            <result column="typename" property="name"/>
+        </association>
+    </resultMap>
+
+
+    <!--高级分页查询-->
+    <select id="selectPageByQuery" resultMap="CourseMap">
+        SELECT
+          <include refid="courseSql"/>,
+        t.name typename
+        FROM t_course s
+        LEFT JOIN
+          t_course_type t
+        ON
+        s.course_type_id = t.id
+          <include refid="whereSql"/>
+    </select>
+
+    <sql id="courseSql">
+        s.id,
+        s.name,
+        s.users,
+        s.course_type_id,
+        s.gradeName,
+        s.grade,
+        s.status,
+        s.tenant_id,
+        s.tenantName,
+        s.user_id,
+        s.userName,
+        s.start_time,
+        s.end_time,
+        s.pic
+    </sql>
+
+    <sql id="whereSql">
+        <where>
+          <if test="query.keyword != null and query.keyword != '' ">
+              s.name LIKE CONCAT("%",#{query.keyword},"%")
+              or
+              t.name LIKE CONCAT("%",#{query.keyword},"%")
+              or
+              s.username LIKE CONCAT("%",#{query.keyword},"%")
+          </if>
+            <if test="query.status!=null">
+                AND c.status = #{query.status}
+            </if>
+        </where>
+    </sql>
 
 </mapper>
