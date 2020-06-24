@@ -19,10 +19,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-elasticsearch</artifactId>
     </dependency>
-
     <!--Feign-->
     <dependency>
       <groupId>org.springframework.cloud</groupId>
@@ -34,9 +33,8 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>cn.itsource.hrm</groupId>
-      <artifactId>hrm-course-service</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
     </dependency>
 
   </dependencies>

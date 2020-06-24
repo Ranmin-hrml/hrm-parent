@@ -1,9 +1,11 @@
 package cn.itsource.hrm.domain;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -53,7 +55,7 @@ public class CourseMarket implements Serializable {
     /**
      * 过期时间
      */
-    private Long expires;
+    private Date expires;
 
     private Long courseId;
 

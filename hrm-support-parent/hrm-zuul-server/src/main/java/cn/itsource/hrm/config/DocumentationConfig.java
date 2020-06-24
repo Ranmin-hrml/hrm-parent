@@ -18,7 +18,7 @@ public class DocumentationConfig implements SwaggerResourcesProvider {
         resources.add(swaggerResource("课程中心", "/services/course/v2/api-docs", "2.0"));
         resources.add(swaggerResource("文件服務", "/services/file/v2/api-docs", "2.0"));
         resources.add(swaggerResource("缓存服務", "/services/cache/v2/api-docs", "2.0"));
-        resources.add(swaggerResource("ES服務", "/services/es/v2/api-docs", "2.0"));
+        resources.add(swaggerResource("全文检索服務", "/services/search/v2/api-docs", "2.0"));
         return resources;
     }
 

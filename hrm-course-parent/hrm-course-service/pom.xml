@@ -44,7 +44,7 @@
 
         <dependency>
             <groupId>cn.itsource.hrm</groupId>
-            <artifactId>hrm-elasticsearch-interface</artifactId>
+            <artifactId>hrm-search-interface</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

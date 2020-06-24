@@ -3,6 +3,13 @@ package cn.itsource.hrm.query;
 
 public class BaseQuery {
 
+    //最大价格
+    private Float priceMax;
+    //最小价格
+    private Float priceMin;
+    //课程类型
+    private Long productType;
+
     private Integer pageNum;
 
     private Integer pageSize;

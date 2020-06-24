@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -24,4 +26,18 @@ public interface CourseMapper extends BaseMapper<Course> {
      * @return
      */
     IPage<Course> selectPageByQuery(Page<?> page, @Param("query") CourseQuery query);
+
+    /**
+     * 上线
+     * @param ids
+     * @param time
+     */
+    void online(@Param("ids") List<Long> ids, @Param("time") long time);
+
+    /**
+     * 下线
+     * @param ids
+     * @param time
+     */
+    void offline(@Param("ids") List<Long> ids, @Param("time") long time);
 }

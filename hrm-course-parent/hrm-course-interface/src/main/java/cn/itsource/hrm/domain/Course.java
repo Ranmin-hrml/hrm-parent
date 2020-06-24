@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -21,6 +22,10 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 @TableName("t_course")
 public class Course implements Serializable {
+
+    //课程状态0未上线 ， 1 已经上线
+    public static final int STATUS_OFFLINE = 0;
+    public static final int STATUS_ONLINE = 1;
 
     private static final long serialVersionUID=1L;
 
@@ -53,7 +58,7 @@ public class Course implements Serializable {
     /**
      * 课程状态
      */
-    private Integer status;
+    private Integer status = STATUS_OFFLINE;
 
     /**
      * 教育机构
@@ -70,14 +75,20 @@ public class Course implements Serializable {
 
     @TableField("userName")
     private String userName;
-
-    private Long startTime;
-
-    private Long endTime;
+    @TableField("startTime")
+    private Date startTime;
+    @TableField("endTime")
+    private Date endTime;
 
     private String pic;
 
     @TableField(exist = false)
     private CourseType courseType;
 
+    //购买数量
+    private Integer buyNumber = 0;
+    //浏览数量
+    private Integer browseNumber = 0;
+    //评论数
+    private Integer commentNumber = 0;
 }

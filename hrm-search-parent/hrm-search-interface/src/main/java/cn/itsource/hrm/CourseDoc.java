@@ -1,4 +1,4 @@
-package cn.itsource.hrm.doc;
+package cn.itsource.hrm;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -8,7 +8,19 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.util.Date;
 
 @Document(indexName = "hrm1",type = "course")
+
 public class CourseDoc {
+
+    private String all;
+
+    public String getAll() {
+        return all;
+    }
+
+    public void setAll(String all) {
+        this.all = all;
+    }
+
     // @id 文档id
     @Id
     private Long id;

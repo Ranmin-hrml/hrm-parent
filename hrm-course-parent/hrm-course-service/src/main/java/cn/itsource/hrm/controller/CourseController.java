@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/course")
 public class CourseController {
     @Autowired
-    public ICourseService courseService;
+    private ICourseService courseService;
 
     /**
      * 添加课程基本信息
@@ -82,4 +82,39 @@ public class CourseController {
     {
         return courseService.page ( query );
     }
+
+
+
+    /**
+     * 上线
+     * @param ids
+     * @return
+     */
+    @PostMapping("/online")
+    public AjaxResult online(@RequestBody List<Long> ids){
+        try {
+            courseService.online(ids);
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("上线失败!"+e.getMessage());
+        }
+    }
+
+    /**
+     * 下线
+     * @param ids
+     * @return
+     */
+    @PostMapping("/offline")
+    public AjaxResult offline(@RequestBody List<Long> ids){
+        try {
+            courseService.offline(ids);
+            return AjaxResult.me();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return AjaxResult.me().setSuccess(false).setMessage("下线失败!"+e.getMessage());
+        }
+    }
+
 }
