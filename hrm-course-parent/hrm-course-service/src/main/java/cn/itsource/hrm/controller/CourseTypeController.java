@@ -1,5 +1,6 @@
 package cn.itsource.hrm.controller;
 
+import cn.itsource.hrm.controller.vo.CrumbVo;
 import cn.itsource.hrm.service.ICourseTypeService;
 import cn.itsource.hrm.domain.CourseType;
 import cn.itsource.hrm.query.CourseTypeQuery;
@@ -16,6 +17,12 @@ import java.util.List;
 public class CourseTypeController {
     @Autowired
     public ICourseTypeService courseTypeService;
+
+    @GetMapping("/loadCrumbs")
+    public List<CrumbVo> loadCrumbs(@RequestParam("courseTypeId") Long courseTypeId){
+        return courseTypeService.loadCrumbs(courseTypeId);
+    }
+
 
     /**
     * 保存和修改公用的
