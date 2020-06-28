@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/course")
 public class CourseController {
     @Autowired
-    private ICourseService courseService;
+    public ICourseService courseService;
 
     /**
      * 添加课程基本信息
@@ -25,7 +25,7 @@ public class CourseController {
     @RequestMapping(value="/add",method=RequestMethod.POST)
     public AjaxResult save(@RequestBody CourseAddVo courseAddVo){
 
-        //对表单提交的内容做验证.........
+        //对表单提交的内容做验证
 
         try {
             courseService.add(courseAddVo);
@@ -35,7 +35,6 @@ public class CourseController {
             return AjaxResult.me().setMessage("删除对象失败！"+e.getMessage());
         }
     }
-
 
     /**
     * 删除对象信息
@@ -80,10 +79,8 @@ public class CourseController {
     @RequestMapping(value = "/page",method = RequestMethod.POST)
     public PageList<Course> page(@RequestBody CourseQuery query)
     {
-        return courseService.page ( query );
+        return courseService.page(query);
     }
-
-
 
     /**
      * 上线

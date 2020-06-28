@@ -2,23 +2,17 @@ package cn.itsource.hrm.controller.vo;
 
 import lombok.Data;
 
+/**
+ * @author ranmin
+ * @version v1.0.0
+ * @date 2020-06-22
+ */
 @Data
 public class CourseAddVo {
-    /**
-     * 课程名称
-     */
+
     private String name;
-    /**
-     * 适用人群
-     */
     private String users;
-    /**
-     * 课程分类
-     */
     private Long courseTypeId;
-    /**
-     * 课程等级
-     */
     private Long grade;
     /**
      * 课程列表页展示课程的图片
@@ -32,4 +26,5 @@ public class CourseAddVo {
      * 详情
      */
     private String description;
+
 }

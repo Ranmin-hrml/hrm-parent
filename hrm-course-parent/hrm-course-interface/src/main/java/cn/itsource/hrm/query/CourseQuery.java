@@ -13,16 +13,7 @@ import lombok.Data;
 @Data
 public class CourseQuery extends BaseQuery {
 
-    //最大价格
-    private Float priceMax;
-    //最小价格
-    private Float priceMin;
-    //课程类型
-    private Long productType;
-    //排序字段
-    private String sortField;
-    //排序方式 asc,desc
-    private String sortType;
 
     private Integer status;
+
 }

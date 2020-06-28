@@ -69,7 +69,12 @@ public class CourseType implements Serializable {
     @TableField("totalCount")
     private Integer totalCount;
 
+    /**
+     * 单表操作的sql是自动生成
+     * 生成sql的时候忽略这个字段
+     */
     @TableField(exist = false)
-    private List<CourseType> children = new ArrayList<> ();
+    private List<CourseType> children = new ArrayList<>();
+
 
 }

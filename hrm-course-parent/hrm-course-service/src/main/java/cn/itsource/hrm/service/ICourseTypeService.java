@@ -15,8 +15,16 @@ import java.util.List;
  * @since 2020-06-17
  */
 public interface ICourseTypeService extends IService<CourseType> {
-
+    /**
+     * 加载课程类型树的数据
+     * @return
+     */
     List<CourseType> loadTypeTree();
 
+    /**
+     * 加载类型面包屑
+     * @param courseTypeId
+     * @return
+     */
     List<CrumbVo> loadCrumbs(Long courseTypeId);
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * </p>
  *
  * @author ranmin
- * @since 2020-06-17
+ * @since 2020-06-22
  */
 @Component
 public interface CourseMarketMapper extends BaseMapper<CourseMarket> {

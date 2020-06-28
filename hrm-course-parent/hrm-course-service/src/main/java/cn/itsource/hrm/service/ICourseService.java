@@ -19,19 +19,27 @@ import java.util.List;
 public interface ICourseService extends IService<Course> {
 
     /**
-     * 分页高级查询
+     * 课程分页高级查询
      * @param query
      * @return
      */
     PageList<Course> page(CourseQuery query);
 
     /**
-     * 添加基本信息
+     * 添加课程的基本信息
      * @param courseAddVo
      */
     void add(CourseAddVo courseAddVo);
 
-    void online(List<Long> ids);
+    /**
+     * 上线
+     * @param ids
+     */
+    void online(List <Long> ids);
 
-    void offline(List<Long> ids);
+    /**
+     * 下线
+     * @param ids
+     */
+    void offline(List <Long> ids);
 }

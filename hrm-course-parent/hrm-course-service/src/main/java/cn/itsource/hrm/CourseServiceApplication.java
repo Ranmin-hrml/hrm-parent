@@ -8,14 +8,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * @author ranmin
+ * @version v1.0.0
+ * @date 2020-06-17
+ */
 @SpringBootApplication
 @MapperScan("cn.itsource.hrm.mapper")
 @EnableFeignClients //开启feign
 public class CourseServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run ( CourseServiceApplication.class,args );
+        SpringApplication.run(CourseServiceApplication.class,args);
     }
+
     @Bean
     public PaginationInterceptor paginationInterceptor() {
         PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
@@ -24,7 +30,7 @@ public class CourseServiceApplication {
         // 设置最大单页限制数量，默认 500 条，-1 不受限制
         // paginationInterceptor.setLimit(500);
         // 开启 count 的 join 优化,只针对部分 left join
-        paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize (true));
+        paginationInterceptor.setCountSqlParser(new JsqlParserCountOptimize(true));
         return paginationInterceptor;
     }
 }

@@ -18,12 +18,6 @@ public class CourseTypeController {
     @Autowired
     public ICourseTypeService courseTypeService;
 
-    @GetMapping("/loadCrumbs")
-    public List<CrumbVo> loadCrumbs(@RequestParam("courseTypeId") Long courseTypeId){
-        return courseTypeService.loadCrumbs(courseTypeId);
-    }
-
-
     /**
     * 保存和修改公用的
     * @param courseType  传递的实体
@@ -98,5 +92,10 @@ public class CourseTypeController {
     @GetMapping("/loadTypeTree")
     public List<CourseType> loadTypeTree(){
         return courseTypeService.loadTypeTree();
+    }
+
+    @GetMapping("/loadCrumbs")
+    public List<CrumbVo> loadCrumbs(@RequestParam("courseType") Long courseTypeId){
+        return courseTypeService.loadCrumbs(courseTypeId);
     }
 }

@@ -20,24 +20,26 @@ import java.util.List;
 public interface CourseMapper extends BaseMapper<Course> {
 
     /**
-     * 高级分页查询
+     * 分页高级查询
+     * 只要第一个参数是Page，mybatisplus会自动分页
+     * 我们只需要玩高级查询
      * @param page
      * @param query
      * @return
      */
-    IPage<Course> selectPageByQuery(Page<?> page, @Param("query") CourseQuery query);
+    IPage<Course> selectPageByQuery(Page <?> page, @Param("query") CourseQuery query);
 
     /**
      * 上线
      * @param ids
      * @param time
      */
-    void online(@Param("ids") List<Long> ids, @Param("time") long time);
+    void online(@Param("ids") List <Long> ids, @Param("time") long time);
 
     /**
      * 下线
      * @param ids
      * @param time
      */
-    void offline(@Param("ids") List<Long> ids, @Param("time") long time);
+    void offline(@Param("ids") List <Long> ids, @Param("time") long time);
 }

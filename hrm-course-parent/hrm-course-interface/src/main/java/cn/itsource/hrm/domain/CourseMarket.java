@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * <p>
@@ -13,7 +12,7 @@ import java.util.Date;
  * </p>
  *
  * @author ranmin
- * @since 2020-06-17
+ * @since 2020-06-22
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -55,7 +54,7 @@ public class CourseMarket implements Serializable {
     /**
      * 过期时间
      */
-    private Date expires;
+    private Long expires;
 
     private Long courseId;
 

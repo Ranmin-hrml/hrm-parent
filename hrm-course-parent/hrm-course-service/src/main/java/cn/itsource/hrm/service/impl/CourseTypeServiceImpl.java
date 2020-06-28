@@ -45,7 +45,7 @@ public class CourseTypeServiceImpl extends ServiceImpl<CourseTypeMapper, CourseT
     @Override
     public List<CourseType> loadTypeTree() {
 
-        List<CourseType> courseTypeList = new ArrayList<> ();
+        List<CourseType> courseTypeList = new ArrayList<>();
 
         //自旋获取锁资源
         while(true){
@@ -63,11 +63,10 @@ public class CourseTypeServiceImpl extends ServiceImpl<CourseTypeMapper, CourseT
                 ajaxResult = cacheClient.setnx("courseTypeKey","1");
                 Integer result = (Integer) ajaxResult.getResultObj();
                 //上锁成功
-                //System.out.println (result);
                 if(result==1){
-                    //如果没有，则查询数据库
+                    //2.2如果没有，则查询数据库
                     courseTypeList = typeTreeByLoopMap();
-                    //缓存到redis中
+                    //3缓存到redis中
                     courseTypeJSON = JSONObject.toJSONString(courseTypeList);
                     cacheClient.setex(KEY,10*60,courseTypeJSON);
                     break;
@@ -79,18 +78,21 @@ public class CourseTypeServiceImpl extends ServiceImpl<CourseTypeMapper, CourseT
             }
         }
 
-        //返回数据
+        //4返回数据
         return courseTypeList;
     }
 
-
+    /**
+     * 加载类型面包屑
+     * @param courseTypeId
+     * @return
+     */
     @Override
-    public List <CrumbVo> loadCrumbs(Long courseTypeId) {
+    public List<CrumbVo> loadCrumbs(Long courseTypeId) {
 
         List<CrumbVo> crumbVos = new ArrayList<>();
 
-        CourseType courseTypes = baseMapper.selectById ( courseTypeId );
-        //获取path值
+        //获取path值  .1.2.3.4.
         CourseType courseType = baseMapper.selectById(courseTypeId);
         String path = courseType.getPath();
         path = path.substring(1);
@@ -105,13 +107,72 @@ public class CourseTypeServiceImpl extends ServiceImpl<CourseTypeMapper, CourseT
             crumbVo.setCurrentType(currentType);
             //获取当前级别的其他类型
             Long pid = currentType.getPid();
-            List<CourseType> otherTypes = baseMapper.selectList(new QueryWrapper<CourseType> ().eq("pid", pid).ne("id", id));
+            List<CourseType> otherTypes = baseMapper.selectList(new QueryWrapper<CourseType>().eq("pid", pid).ne("id", id));
             crumbVo.setOtherTypes(otherTypes);
             crumbVos.add(crumbVo);
         }
 
 
         return crumbVos;
+    }
+
+    public static void main(String[] args) {
+
+        //正则表达式里面.是特殊字符，表示匹配任意一个字符
+        String path = ".1037.1039.1040.";
+        path = path.substring(1);
+        List<Long> longs = StrUtils.splitStr2LongArr(path, "\\.");
+        System.out.println(longs);
+
+    }
+
+
+    /**
+     * 根据父id递归查询所有的子类型
+     * @param parentId
+     * @return
+     */
+    private List<CourseType> getByParentId(Long parentId){
+        List<CourseType> courseTypes = baseMapper.selectList(new QueryWrapper<CourseType>().eq("pid", parentId));
+        //递归的出口
+        if(courseTypes==null||courseTypes.size()<=0){
+            return null;
+        }
+        for (CourseType courseType : courseTypes) {
+            List<CourseType> children = getByParentId(courseType.getId());
+            courseType.setChildren(children);
+        }
+        return courseTypes;
+    }
+
+    /**
+     * 嵌套循环的方式查询无限级别的课程类型
+
+     *
+     * @return
+     */
+    private List<CourseType> typeTreeByLoop(){
+
+        //先查询所有的课程类型
+        List<CourseType> allCourseTypes = baseMapper.selectList(null);
+        //创建一个集合存放所有的一级类型
+        List<CourseType> firstLevelCourseTypes = new ArrayList<>();
+        //遍历所有的课程类型
+        for (CourseType courseType : allCourseTypes) {
+            //如果pid为0，则表示是一级类型，放入之前创建的集合中
+            if(courseType.getPid()==0){
+                firstLevelCourseTypes.add(courseType);
+            }else{
+                //如果pid不为0，则嵌套循环查询他的父类型，添加到父类型的children集合中
+                for (CourseType parentType : allCourseTypes) {
+                    if(courseType.getPid().equals(parentType.getId())){
+                        parentType.getChildren().add(courseType);
+                    }
+                }
+            }
+        }
+
+        return firstLevelCourseTypes;
     }
 
     /**
@@ -127,7 +188,7 @@ public class CourseTypeServiceImpl extends ServiceImpl<CourseTypeMapper, CourseT
         //创建一个集合存放所有的一级类型
         List<CourseType> firstLevleTypes = new ArrayList<>();
         //创建一个Map存放所有类型，Map的key为类型d的i，Map的value为当前类型对象
-        Map<Long,CourseType> courseTypeMap = new HashMap<> ();
+        Map<Long,CourseType> courseTypeMap = new HashMap<>();
 
         //往Map中放值
         for (CourseType courseType : courseTypeList) {
@@ -182,4 +243,6 @@ public class CourseTypeServiceImpl extends ServiceImpl<CourseTypeMapper, CourseT
         String str = JSONObject.toJSONString(courseTypes);
         cacheClient.setex(KEY,10*60,str);
     }
+
+
 }

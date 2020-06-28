@@ -6,7 +6,7 @@ package cn.itsource.hrm.query;
  * </p>
  *
  * @author ranmin
- * @since 2020-06-17
+ * @since 2020-06-22
  */
 public class CourseMarketQuery extends BaseQuery {
 

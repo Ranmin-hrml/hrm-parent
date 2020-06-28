@@ -17,7 +17,6 @@
             <artifactId>hrm-course-interface</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>cn.itsource.hrm</groupId>
             <artifactId>hrm-basic-boot-starter</artifactId>
@@ -41,10 +40,9 @@
             <artifactId>hrm-system-interface</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>cn.itsource.hrm</groupId>
-            <artifactId>hrm-search-interface</artifactId>
+            <artifactId>hrm-elasticsearch-interface</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
