@@ -37,7 +37,7 @@
 
         <dependency>
             <groupId>cn.itsource.hrm</groupId>
-            <artifactId>hrm-sms-interface</artifactId>
+            <artifactId>hrm-sms-service</artifactId>
             <version>${project.version}</version>
         </dependency>
 

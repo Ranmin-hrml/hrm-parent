@@ -11,11 +11,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/**
- * @author ranmin
- * @version v1.0.0
- * @date 2020-06-17
- */
+
 @Configuration
 @EnableSwagger2
 public class Swagger2Configuration {
@@ -35,9 +31,9 @@ public class Swagger2Configuration {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("全文检索服务文档")
-                .description("全文检索服务的接口文档")
-                .contact(new Contact("ranmin", "", "1606905432@qq.com"))
+                .title("短信服务文档")
+                .description("短信服务的接口文档")
+                .contact(new Contact("ranmin", "", "ranmin@qq.com"))
                 .version("1.0")
                 .build();
     }

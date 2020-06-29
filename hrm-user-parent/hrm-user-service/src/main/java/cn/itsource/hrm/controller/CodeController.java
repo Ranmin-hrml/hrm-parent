@@ -60,7 +60,7 @@ public class CodeController {
 
             //判断图形验证码是否正确
             String redisKey = "CODE:IMAGE:"+vo.getUuid();
-            String validateCode = cacheClient.get(redisKey);
+            AjaxResult validateCode = cacheClient.get(redisKey);
             if(!(vo.getCode().equals(validateCode))){
                 return AjaxResult.me().setSuccess(false).setMessage("图形验证码错误!");
             }
@@ -68,12 +68,12 @@ public class CodeController {
             //从redis中获取短信验证码
             redisKey = "CODE:SMS:"+vo.getPhoneNum();
             //value = {验证码},{超时时间}
-            String redisValue = cacheClient.get(redisKey);
+            AjaxResult redisValue = cacheClient.get(redisKey);
 
             String code = null;
             Long lastSendTime = null;
 
-            if(StringUtils.isNotEmpty(redisValue)){
+            if(StringUtils.isNotEmpty( String.valueOf ( redisValue ) )){
                 String[] split = redisValue.split(",");
                 code = split[0];
                 lastSendTime = Long.valueOf(split[1]);
@@ -90,13 +90,13 @@ public class CodeController {
 
             lastSendTime = System.currentTimeMillis();
             //保存redis
-            redisValue = code+","+lastSendTime;
+            //redisValue = code+","+lastSendTime;
             //重发时间为20S，超时时间为5分钟
-            cacheClient.setex(redisKey,redisValue,5*60);
+            //cacheClient.setex(redisKey,redisValue,5*60);
 
 
             //发送短信
-            SMSUtil.sendSMS(vo.getPhoneNum(),code);
+            //SMSUtil.sendSMS(vo.getPhoneNum(),code);
 
             return AjaxResult.me().setSuccess(true).setMessage("发送成功!");
         } catch (Exception e) {

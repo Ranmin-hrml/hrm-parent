@@ -30,13 +30,25 @@ public interface CacheClient {
     @GetMapping("/getStr")
     AjaxResult get(@RequestParam("key")String key);
 
+    /**
+     * 时间有效性
+     * @param key
+     * @param seconds
+     * @param value
+     * @return
+     */
     @GetMapping("/setex")
     AjaxResult setex(
             @RequestParam("key") String key,
             @RequestParam("seconds")Integer seconds,
             @RequestParam("value") String value);
 
-
+    /**
+     * 加锁
+     * @param key
+     * @param value
+     * @return
+     */
     @GetMapping("/setnx")
     AjaxResult setnx(
             @RequestParam("key") String key,

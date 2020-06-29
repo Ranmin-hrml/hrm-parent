@@ -29,6 +29,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-    </dependencies>
 
+        <dependency>
+            <groupId>cn.itsource.hrm</groupId>
+            <artifactId>hrm-course-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

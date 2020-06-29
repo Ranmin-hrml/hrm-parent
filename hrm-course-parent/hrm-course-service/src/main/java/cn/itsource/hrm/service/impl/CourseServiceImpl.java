@@ -1,14 +1,14 @@
 package cn.itsource.hrm.service.impl;
 import cn.itsource.hrm.client.CourseDocClient;
 import cn.itsource.hrm.client.SystemdictionaryItemClient;
+import cn.itsource.hrm.controller.vo.CourseAddVo;
 import cn.itsource.hrm.doc.CourseDoc;
 import cn.itsource.hrm.domain.*;
-
-import cn.itsource.hrm.controller.vo.CourseAddVo;
 import cn.itsource.hrm.mapper.CourseDetailMapper;
 import cn.itsource.hrm.mapper.CourseMapper;
 import cn.itsource.hrm.mapper.CourseMarketMapper;
 import cn.itsource.hrm.mapper.CourseTypeMapper;
+import cn.itsource.hrm.query.CourseDocQuery;
 import cn.itsource.hrm.query.CourseQuery;
 import cn.itsource.hrm.service.ICourseService;
 import cn.itsource.hrm.util.AjaxResult;
@@ -21,7 +21,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,6 +82,18 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         if(!ajaxResult.isSuccess()){
             throw new RuntimeException(ajaxResult.getMessage());
         }
+    }
+
+    /**
+     * 检索
+     * @param query
+     * @return
+     */
+    @Override
+    public PageList <CourseDoc> pageOnline(CourseQuery query) {
+        CourseDocQuery docQuery = new CourseDocQuery ();
+        BeanUtils.copyProperties(query,docQuery);
+        return courseDocClient.page(docQuery);
     }
 
 
@@ -158,6 +169,5 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         courseDetail.setCourseId(course.getId());
         courseDetailMapper.insert(courseDetail);
     }
-
 
 }
